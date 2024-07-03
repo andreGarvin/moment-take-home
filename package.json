@@ -1,0 +1,33 @@
+{
+  "name": "moment-take-home",
+  "version": "1.0.0",
+  "description": "Moment take home assignment",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build"
+  },
+  "author": "Andre Wayde Garvin Martin",
+  "license": "ISC",
+  "dependencies": {
+    "@tanstack/react-query": "5.49.2",
+    "@tremor/react": "3.17.4",
+    "date-fns": "3.6.0",
+    "lucide-react": "0.400.0",
+    "next": "14.2.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwind-merge": "2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.9",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "postcss": "8.4.31",
+    "prettier": "2.8.6",
+    "tailwindcss": "3.2.7",
+    "typescript": "5.0.2"
+  }
+}
