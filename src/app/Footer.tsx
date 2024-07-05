@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="w-11/12 flex flex-col justify-center items-center text-sm text-center">
+    <div className="flex flex-col justify-center items-center text-sm text-center">
       <p className="mb-4">
         Securities products, including fixed income securities, and investment
         advisory services are offered by Company Investment Advisory, LLC, a

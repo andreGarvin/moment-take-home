@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { URLPattern } from "next/server";
+import Link from "next/link";
 
 import { twMerge } from "tailwind-merge";
 
 import { Logo } from "./components/logo";
-import { Button } from "./components/ui/button";
+import { Button } from "./components/ui/Button";
 
 
 type Tab = { label: string, url: string };
@@ -20,7 +21,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
 
   const pathname = usePathname();
 
-  const activeLink = pathname === url;
+  const activeLink = pathname.slice(1) === url.slice(1);
 
   const className = twMerge(
     "border-0 shadow-none capitalize mx-1 px-4 py-2",
@@ -29,7 +30,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
 
   return (
     <Link href={url}>
-      <Button className={className}>{label}</Button>
+      <Button key={url} className={className}>{label}</Button>
     </Link>
   );
 }
@@ -71,7 +72,7 @@ const TabList: Tab[] = [
 
 export const Header = () => {
   return (
-    <div className="w-full flex justify-center py-4">
+    <div className="w-full flex justify-center border-b-2 border-[#E4E4E7] py-4">
       <div className="w-11/12 flex flex-row justify-between items-center">
         <Link href="/">
           <Logo />

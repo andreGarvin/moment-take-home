@@ -1,9 +1,22 @@
 'use client'
 
-export default function Error() {
+import { useEffect } from "react";
+
+type ErrorPageProps = {
+  error: Error & { digest?: string };
+  reset: () => void;
+}
+
+export default function Error(props: ErrorPageProps) {
+  const { error } = props;
+
+  useEffect(() => {
+    console.error(error)
+  }, [error]);
+
   return (
     <div className="h-full flex flex-col justify-center items-center">
-      <p className="mb-4 font-bold text-4xl first-letter:capitalize">
+      <p className="mb-4 font-bold text-2xl first-letter:capitalize">
         something went wrong
       </p>
     </div>

@@ -2,7 +2,7 @@ import "src/app/globals.css";
 
 import { Metadata } from "next";
 
-import { Footer } from "./footer";
+import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 export const revalidate = 3600 // revalidate at most every hour
@@ -27,10 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen bg-white">
-        <div className="h-screen w-full">
-          <div className="h-full flex flex-col justify-center items-center">
-            <Header />
+      <body className="h-full bg-[#F9F9F9]">
+        <div className="h-full flex flex-col justify-center items-center">
+          <Header />
+          <div className="w-11/12 h-full flex flex-col justify-between pb-4">
             {children}
             <Footer />
           </div>
