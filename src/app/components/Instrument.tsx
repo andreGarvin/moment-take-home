@@ -16,7 +16,7 @@ export const InstrumentList: React.FC<InstrumentListProps> = (props) => {
   ));
 
   return (
-    <div className="grid grid-cols-3 grid-flow-rows gap-6">
+    <div className="grid grid-cols-3 grid-flow-rows gap-10">
       {InstrumentList}
     </div>
   );

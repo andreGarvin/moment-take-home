@@ -10,6 +10,7 @@ import { Credit } from "./instrument/Credit";
 import { Issuer } from "./instrument/Issuer";
 
 import { getInstrument, getInstruments } from "src/client";
+import { Section } from "src/app/components/ui/Section";
 
 
 export default async function Page({ params }) {
@@ -121,12 +122,13 @@ export default async function Page({ params }) {
         </div>
       </div>
 
-      <AnalyticalPricing data={pricing} />
+      <Section label="pricing & analytics">
+        <AnalyticalPricing data={pricing} />
+      </Section>
 
-      <div className="flex flex-col mt-2 mb-8">
-        <p className="mb-8 text-2xl font-light capitalize">other UTS issues</p>
+      <Section label="other UTS issues">
         <InstrumentList data={instruments} />
-      </div>
+      </Section>
     </div>
   );
 }

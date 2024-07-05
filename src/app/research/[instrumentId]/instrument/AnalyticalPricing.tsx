@@ -13,42 +13,37 @@ export const AnalyticalPricing: React.FC<AnalyticalPricingProps> = (props) => {
   const { data } = props;
 
   return (
-    <div className="w-full flex flex-col my-8">
-      <div className="flex flex-col mb-8">
-        <p className="mb-4 text-2xl font-light capitalize">
-          pricing & Analytics
-        </p>
-        <span>
-          <p>moderation duration</p>
-          <FormatValue data={data.duration} />
-        </span>
-      </div>
+    <>
+      <span className="mb-8">
+        <p>moderation duration</p>
+        <FormatValue data={data.duration} />
+      </span>
       <div className="grid grid-cols-3 grid-flow-cols gap-10">
-        <div className="flex flex-col">
+        <span className="flex flex-col">
           <p className="capitalize">retail aggregate liquidity score</p>
           <Rating rating={data.liquidity_retail_aggregate} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">retail buy liquidity score</p>
           <Rating rating={data.liquidity_institutional_buy} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">retail sell liquidity score</p>
           <Rating rating={data.liquidity_institutional_sell} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">inst. aggregate liquidity score</p>
           <Rating rating={data.liquidity_institutional_aggregate} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">inst. buy liquidity score</p>
           <Rating rating={data.liquidity_institutional_buy} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">inst. sell liquidity score</p>
           <Rating rating={data.liquidity_institutional_sell} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">third party evaluated price</p>
           <FormatValue
             prepend="$"
@@ -56,17 +51,17 @@ export const AnalyticalPricing: React.FC<AnalyticalPricingProps> = (props) => {
               .format(data.close_price as number)
               .toString()}
           />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">third party evaluated YTW</p>
           <FormatValue data={data.close_ytw} />
-        </div>
-        <div className="flex flex-col">
+        </span>
+        <span className="flex flex-col">
           <p className="capitalize">third party evaluated date</p>
           <FormatValue data={data.close_price_asof} />
-        </div>
+        </span>
       </div>
-    </div>
+    </>
   );
 }
 
