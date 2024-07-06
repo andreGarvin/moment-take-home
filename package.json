@@ -7,7 +7,8 @@
     "typecheck": "tsc",
     "dev": "next dev",
     "start": "next start",
-    "build": "next build"
+    "build": "next build",
+    "test": "playwright test"
   },
   "author": "Andre Wayde Garvin Martin",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "tailwind-merge": "2.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.45.1",
     "@tailwindcss/forms": "0.5.7",
     "@types/node": "20.14.9",
     "@types/node-fetch": "2.6.11",

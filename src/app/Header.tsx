@@ -26,7 +26,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
 
   const className = twMerge(
     "border-0 shadow-none capitalize mx-1 px-4 py-2",
-    activeLink ? "bg-[#E5E7EB]" : "bg-transparent"
+    activeLink ? "bg-[#E5E7EB] font-medium" : "bg-transparent font-normal"
   );
 
   return (
@@ -73,7 +73,7 @@ const TabList: Tab[] = [
 
 export const Header = () => {
   return (
-    <div className="w-full flex justify-center border-b-2 border-[#E4E4E7] py-4">
+    <nav className="w-full flex justify-center border-b-2 border-[#E4E4E7] py-4">
       <div className="w-11/12 flex flex-row justify-between items-center">
         <Link href="/">
           <Logo />
@@ -82,6 +82,6 @@ export const Header = () => {
         <Tabs list={TabList} />
         <div></div>
       </div>
-    </div>
+    </nav>
   );
 }
