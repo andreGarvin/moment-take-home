@@ -17,8 +17,8 @@ export default async function Page({ params }) {
   const { instrumentId } = params;
 
   const instrument = await getInstrument(instrumentId as string);
-  // adding slice to show different instruments from the first page
-  const instruments = (await getInstruments(1, 12, "matured")).slice(6);
+
+  const instruments = (await getInstruments(2, 6, "matured"));
 
   const security = {
     isin: instrument.isin,
@@ -31,6 +31,7 @@ export default async function Page({ params }) {
     treasury_subtype: instrument.treasury_subtype,
     last_coupon_date: instrument.last_coupon_date,
     next_coupon_date: instrument.next_coupon_date,
+    first_coupon_date: instrument.first_coupon_date,
     description_short: instrument.description_short,
   };
 
@@ -100,7 +101,7 @@ export default async function Page({ params }) {
   };
 
   return (
-    <div className="h-full flex flex-col items-start">
+    <div className="h-full flex flex-col items-start my-8">
       {/* instrument Title */}
       <Title cusip={instrument.cusip as string} />
 
@@ -110,7 +111,7 @@ export default async function Page({ params }) {
         description={instrument.description_short as string}
       />
 
-      <div className="h-full w-full flex flex-col my-12 pb-16 border-b-2 border-[#E4E4E7]">
+      <div className="h-full w-full flex flex-col my-8 pb-16 border-b-2 border-[#E4E4E7]">
         {/* instrument Summary */}
         {/* @ts-ignore */}
         <Summary data={security} />

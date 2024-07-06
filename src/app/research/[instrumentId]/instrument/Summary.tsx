@@ -1,5 +1,7 @@
 import { FormatValue } from "src/app/components/FormatValue";
 
+import { Chart } from "./Chart";
+
 import { Instrument } from "src/types";
 
 type SummaryProps = {
@@ -65,7 +67,9 @@ export const Summary: React.FC<SummaryProps> = (props) => {
           </span>
         </div>
       </div>
-      <div className="w-3/4">{/* #TODO: add line chart */}</div>
+      <div className="w-3/4">
+        <Chart instrumentId={data.cusip as string} />
+      </div>
     </div>
   );
 }

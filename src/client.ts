@@ -1,24 +1,26 @@
-import { Instrument, InstrumentStatus } from "./types";
+import { format } from "date-fns";
+import { Instrument, InstrumentFrequency, InstrumentStatus, PriceHistory } from "./types";
 
 async function fetchData<T>(url: string): Promise<T> {
-    const res = await fetch(url, {
+  const res = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.PAPER_API_KEY}`,
+      "Access-Control-Allow-Headers": "*",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_PAPER_API_KEY}`,
     },
-    cache: 'no-store'
+    cache: "no-store",
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error(`Failed to fetch data for ${url}`);
   }
 
   return await res.json()
 }
 
 export async function getInstrument(instrumentId: string): Promise<Instrument> {
-  const url = new URL(process.env.PAPER_API_URL as string);
+  const url = new URL(process.env.NEXT_PUBLIC_PAPER_API_URL as string);
 
   url.pathname = `${url.pathname}/data/instrument/${instrumentId}/`;
 
@@ -28,7 +30,7 @@ export async function getInstrument(instrumentId: string): Promise<Instrument> {
 }
 
 export async function getInstruments(page: number = 1, size: number = 12, status: InstrumentStatus | void = undefined): Promise<Instrument[]> {
-  const url = new URL(process.env.PAPER_API_URL as string);
+  const url = new URL(process.env.NEXT_PUBLIC_PAPER_API_URL as string);
 
   // need to add trailing slash for hit the /instrument
   url.pathname = `${url.pathname}/data/instrument/`;
@@ -42,3 +44,23 @@ export async function getInstruments(page: number = 1, size: number = 12, status
 
   return data;
 }
+
+export async function getInstrumentPriceHistory(instrumentId: string, frequency: InstrumentFrequency = "1day", startDate: Date, endDate: Date): Promise<PriceHistory[]> {
+  const start = format(startDate, "yyyy-MM-dd");
+  const end = format(endDate, "yyyy-MM-dd");
+
+  const url = new URL(process.env.NEXT_PUBLIC_PAPER_API_URL as string);
+
+  // need to add trailing slash for hit the /instrument
+  url.pathname = `${url.pathname}/data/instrument/${instrumentId}/price/`;
+  url.searchParams.set("start", start.toString());
+  url.searchParams.set("end", end.toString());
+  if (frequency) {
+    url.searchParams.set("frequency", frequency);
+  }
+
+  const { data } = await fetchData<{ data: PriceHistory[] }>(url.toString());
+
+  return data;
+}
+

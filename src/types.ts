@@ -14,6 +14,28 @@ export type InstrumentStatus =
   | "restructured"
   | "unknown";
 
+export type InstrumentFrequency = "1day" | "15min" | "1min";
+
+export type InstrumentSummary = InstrumentCoupon &
+  Partial<{
+    type: string;
+    isin: string;
+    cusip: string;
+    issuer: string;
+    par_value: number;
+    description: string;
+    maturity_date: string;
+    treasury_subtype: string;
+    description_short: string;
+  }>;
+
+export type PriceHistory = {
+  price: number;
+  timestamp: string;
+  yield_to_worst: number;
+  yield_to_maturity: number;
+};
+
 export type InstrumentCoupon = Partial<{
   coupon_type: string;
   next_coupon_date: string;
@@ -21,13 +43,6 @@ export type InstrumentCoupon = Partial<{
   first_coupon_date: string;
 }>;
 
-export type InstrumentSummary = InstrumentCoupon &
-  Partial<{
-    isin: string;
-    issuer: string;
-    par_value: number;
-    treasury_subtype: string;
-  }>;
 
 export type InstrumentIssuer = InstrumentCoupon &
   Partial<{

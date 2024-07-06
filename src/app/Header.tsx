@@ -20,8 +20,9 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
   const { label, url } = props.item;
 
   const pathname = usePathname();
+  const [root] = pathname.split("/").slice(1);
 
-  const activeLink = pathname.slice(1) === url.slice(1);
+  const activeLink = root === url.slice(1);
 
   const className = twMerge(
     "border-0 shadow-none capitalize mx-1 px-4 py-2",
