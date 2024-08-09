@@ -1,4 +1,4 @@
-import { InstrumentList } from "./components/Instrument";
+import { InstrumentList } from "src/app/components/Instrument";
 
 import { getInstruments } from "src/client";
 

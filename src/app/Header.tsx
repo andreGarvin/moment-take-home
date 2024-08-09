@@ -6,8 +6,8 @@ import Link from "next/link";
 
 import { twMerge } from "tailwind-merge";
 
-import { Logo } from "./components/logo";
-import { Button } from "./components/ui/Button";
+import { Logo } from "src/app/components/logo";
+import { Button } from "src/app/components/ui/Button";
 
 
 type Tab = { label: string, url: string };
