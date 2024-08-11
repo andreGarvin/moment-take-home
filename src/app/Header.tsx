@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { URLPattern } from "next/server";
 import Link from "next/link";
 
 import { twMerge } from "tailwind-merge";
