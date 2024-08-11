@@ -1,5 +1,5 @@
 import { Empty } from "src/app/components/FormatValue";
-import { Button } from "./components/ui/Button";
+import { Button } from "src/app/components/ui/Button";
 
 import { formatDistance } from "date-fns";
 
